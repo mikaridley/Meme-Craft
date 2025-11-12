@@ -9,6 +9,7 @@
 
 /* COMPONENTS */
 @import url('components/main-header.css');
+@import url('components/editor.css');
 
 /* MQ */
 @import url('setup/mq.css');
