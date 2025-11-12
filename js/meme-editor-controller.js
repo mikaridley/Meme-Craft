@@ -13,6 +13,8 @@ function renderMeme() {
   renderCanvas()
   const elImg = new Image()
   elImg.src = img.url
+  //   elImg.dataset.id = img.id
+
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     const memeText = meme.lines[meme.selectedLineIdx].txt
@@ -25,7 +27,7 @@ function renderCanvas() {
   gCtx = gElCanvas.getContext('2d')
 
   //4:3 ratio
-  gElCanvas.width = window.innerWidth * 0.6
+  gElCanvas.width = window.innerWidth * 0.4
   gElCanvas.height = gElCanvas.width * 0.75
 
   gCtx.fillStyle = '#f4f4f4'
@@ -33,15 +35,18 @@ function renderCanvas() {
 }
 
 function drawText(txt) {
-  const fontSize = gElCanvas.height * 0.08
-  gCtx.font = `${fontSize}px Impact`
+  const meme = getMeme()
+  const memeFontSize = meme.lines[meme.selectedLineIdx].size
+  const memeFontColor = meme.lines[meme.selectedLineIdx].color
+  //   const fontSize = gElCanvas.height * 0.08
+  gCtx.font = `${memeFontSize}px Impact`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'top'
 
-  gCtx.lineWidth = fontSize / 20
+  gCtx.lineWidth = memeFontSize / 20
 
   gCtx.strokeStyle = 'black'
-  gCtx.fillStyle = 'white'
+  gCtx.fillStyle = memeFontColor
 
   //put the txt constant
   const x = gElCanvas.width / 2
@@ -49,4 +54,9 @@ function drawText(txt) {
 
   gCtx.fillText(txt, x, y)
   gCtx.strokeText(txt, x, y)
+}
+
+function onSetLineTxt(value) {
+  setLineText(value)
+  renderMeme()
 }
