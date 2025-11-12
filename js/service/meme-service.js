@@ -17,6 +17,7 @@ function _createMeme(id) {
         size: 50,
         color: 'white',
         pos: {},
+        align: 'center',
       },
     ],
   }
@@ -84,6 +85,21 @@ function switchLine(idx = null) {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
   } else gMeme.selectedLineIdx = idx
+}
+
+function setLeftText() {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].align = 'left'
+}
+
+function setCenterText() {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].align = 'center'
+}
+
+function setRightText() {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].align = 'right'
 }
 
 //get things

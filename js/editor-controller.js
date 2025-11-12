@@ -43,8 +43,14 @@ function drawText(memeline, idx, position, isForDownload) {
   gCtx.strokeStyle = 'black'
   gCtx.fillStyle = memeline.color
 
-  //put the txt constant
-  var x = gElCanvas.width / 2
+  //set the align text
+  if (memeline.align === 'left')
+    var x = gElCanvas.width / 2 - gElCanvas.width * 0.2
+  else if (memeline.align === 'right')
+    var x = gElCanvas.width / 2 + gElCanvas.width * 0.2
+  else var x = gElCanvas.width / 2
+
+  //set the position
   if (position === 'top') var y = gElCanvas.height * 0.1
   else if (position === 'bottom') var y = gElCanvas.height * 0.8
   else if ('middle') var y = gElCanvas.height / 2
@@ -124,6 +130,21 @@ function onAddLine() {
 
 function onSwitchLine() {
   switchLine()
+  renderMeme()
+}
+
+function onSetLeftText() {
+  setLeftText()
+  renderMeme()
+}
+
+function onSetCenterText() {
+  setCenterText()
+  renderMeme()
+}
+
+function onSetRightText() {
+  setRightText()
   renderMeme()
 }
 
