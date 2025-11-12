@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1em;
+  align-items: center;
 
   & .upload-img {
     width: 100%;

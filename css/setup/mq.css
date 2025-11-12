@@ -1,6 +1,9 @@
 /* mobile only */
 
-@media (min-width: 790px) {
+@media (max-width: 480px) {
+  .editor {
+    flex-direction: column;
+  }
 }
 
 /* Medium BP */
