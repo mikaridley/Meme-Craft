@@ -20,7 +20,6 @@ function renderMeme() {
   renderCanvas()
   const elImg = new Image()
   elImg.src = img.url
-  //   elImg.dataset.id = img.id
 
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)

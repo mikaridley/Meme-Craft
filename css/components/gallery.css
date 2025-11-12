@@ -6,7 +6,7 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1em;
 
-  > :first-child {
-    grid-column: 2;
+  & .upload-img {
+    width: 100%;
   }
 }
