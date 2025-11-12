@@ -6,14 +6,9 @@ function onInit() {
   renderGallery()
 }
 
-function onRenderEditor(id) {
-  document.querySelector('.editor').classList.remove('hidden')
-  document.querySelector('.gallery').classList.add('hidden')
-  setMeme(id)
-  renderMeme()
-}
+//render things
 
-function renderMeme() {
+function renderMeme(isForDownload = false) {
   const meme = getMeme()
   const img = getImgById(meme.selectedImgId)
 
@@ -23,8 +18,7 @@ function renderMeme() {
 
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    const memeText = meme.lines[meme.selectedLineIdx].txt
-    drawText(memeText)
+    renderAllTextLines(isForDownload)
   }
 }
 
@@ -40,29 +34,123 @@ function renderCanvas() {
   gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function drawText(txt) {
-  const meme = getMeme()
-  const memeFontSize = meme.lines[meme.selectedLineIdx].size
-  const memeFontColor = meme.lines[meme.selectedLineIdx].color
-  //   const fontSize = gElCanvas.height * 0.08
-  gCtx.font = `${memeFontSize}px Impact`
+function drawText(memeline, idx, position, isForDownload) {
+  console.log('isForDownload:', isForDownload)
+  const selectedId = getMeme().selectedLineIdx
+  gCtx.font = `${memeline.size}px Impact`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'top'
 
-  gCtx.lineWidth = memeFontSize / 20
+  gCtx.lineWidth = memeline.size / 20
 
   gCtx.strokeStyle = 'black'
-  gCtx.fillStyle = memeFontColor
+  gCtx.fillStyle = memeline.color
 
   //put the txt constant
-  const x = gElCanvas.width / 2
-  const y = gElCanvas.height * 0.1
+  var x = gElCanvas.width / 2
+  if (position === 'top') var y = gElCanvas.height * 0.1
+  else if (position === 'bottom') var y = gElCanvas.height * 0.8
+  else if ('middle') var y = gElCanvas.height / 2
 
-  gCtx.fillText(txt, x, y)
-  gCtx.strokeText(txt, x, y)
+  const textMetrics = gCtx.measureText(memeline.txt)
+  const textWidth = textMetrics.width
+  const textHeight = memeline.size
+  const xStart = x - textWidth / 2
+  setPositionToLine(idx, xStart, y, textWidth, textHeight)
+
+  gCtx.fillText(memeline.txt, x, y)
+  gCtx.strokeText(memeline.txt, x, y)
+
+  if (idx === selectedId && !isForDownload) drawFrame(memeline, x, y)
+}
+
+function drawFrame(memeline, x, y, state) {
+  const textMetrics = gCtx.measureText(memeline.txt)
+  const textWidth = textMetrics.width
+  const textHeight = memeline.size // approximate height
+
+  const padding = 10
+  const rectX = x - textWidth / 2 - padding
+  const rectY = y - padding / 2
+  const rectWidth = textWidth + padding * 2
+  const rectHeight = textHeight + padding
+
+  gCtx.lineWidth = 3
+  gCtx.strokeStyle = 'black'
+  gCtx.strokeRect(rectX, rectY, rectWidth, rectHeight)
+}
+
+function renderAllTextLines(isForDownload) {
+  var memeLines = getMeme().lines
+  drawText(memeLines[0], 0, 'top', isForDownload)
+  if (memeLines[1]) drawText(memeLines[1], 1, 'bottom', isForDownload)
+  // if (memeLines[2]) {
+  //   memeLines.splice(0, 2)
+  //   memeLines.forEach(line => {
+  //     if (line) drawText(line.txt, 'middle')
+  //   })
+  // }
+}
+
+//on things
+function onRenderEditor(id) {
+  document.querySelector('.editor').classList.remove('hidden')
+  document.querySelector('.gallery').classList.add('hidden')
+  setMeme(id)
+  renderMeme()
 }
 
 function onSetLineTxt(value) {
   setLineText(value)
+  renderMeme()
+}
+
+function onChangeColor(color) {
+  changeColor(color)
+  renderMeme()
+}
+
+function onDecreaseFont() {
+  decreaseFont()
+  renderMeme()
+}
+
+function onIncreaseFont() {
+  increaseFont()
+  renderMeme()
+}
+
+function onAddLine() {
+  addLine()
+  renderMeme()
+}
+
+function onSwitchLine() {
+  switchLine()
+  renderMeme()
+}
+
+function onImgReady() {
+  renderMeme(true)
+}
+
+function onDownloadImg(elLink) {
+  const imgContent = gElCanvas.toDataURL('image/jpeg')
+  elLink.href = imgContent
+}
+
+function onCanvaClick(ev) {
+  const { offsetX, offsetY } = ev
+  const memeLines = getMeme().lines
+  const line = memeLines.findIndex(line => {
+    console.log('line:', line)
+    return (
+      offsetX >= line.pos.x &&
+      offsetX <= line.pos.x + line.pos.textWidth &&
+      offsetY >= line.pos.y &&
+      offsetY <= line.pos.y + line.pos.textHeight
+    )
+  })
+  switchLine(line)
   renderMeme()
 }

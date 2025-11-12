@@ -20,10 +20,63 @@
     <main class="main-layout flex align-center center">
       <section class="gallery"></section>
       <section class="editor flex hidden">
-        <canvas width="" height=""> </canvas>
+        <canvas onclick="onCanvaClick(event)"></canvas>
         <section class="canvas-settings">
-          <label for="text">Insert Text</label>
-          <input oninput="onSetLineTxt(this.value)" id="text" type="text" />
+          <sections class="text-input-container">
+            <label for="text">Insert Text</label>
+            <input oninput="onSetLineTxt(this.value)" id="text" type="text" />
+          </sections>
+
+          <section class="icons-container">
+            <label for="color">
+              <img class="icon" src="icons/paint-text-icon.png" alt="Icon"
+            /></label>
+            <input
+              oninput="onChangeColor(this.value)"
+              class="opacity0"
+              id="color"
+              type="color"
+            />
+
+            <img
+              class="icon"
+              onclick="onDecreaseFont()"
+              src="icons/decrease-font-icon.png"
+              alt="Icon"
+            />
+
+            <img
+              class="icon"
+              onclick="onIncreaseFont()"
+              src="icons/increase-font-icon.png"
+              alt="Icon"
+            />
+
+            <img
+              class="icon"
+              onclick="onAddLine()"
+              src="icons/add-line-icon.png"
+              alt="Icon"
+            />
+
+            <img
+              class="icon"
+              onclick="onSwitchLine()"
+              src="icons/switch-line-icon.png"
+              alt="Icon"
+            />
+          </section>
+
+          <section class="btn-container">
+            <button onclick="onImgReady()">Ready</button>
+            <a
+              href="#"
+              class="btn"
+              onclick="onDownloadImg(this,event)"
+              download="my-meme.jpg"
+              >Download</a
+            >
+          </section>
         </section>
       </section>
     </main>

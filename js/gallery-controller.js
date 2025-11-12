@@ -9,7 +9,6 @@ function onRenderGallery() {
 function renderGallery() {
   const elGallery = document.querySelector('.gallery')
   var imgs = getImgs()
-  console.log('imgs:', imgs)
   let strHtml = '<div class="upload-img">Upload</div>'
 
   imgs = imgs.map(img => {

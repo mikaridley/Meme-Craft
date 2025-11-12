@@ -4,7 +4,6 @@ var gImgs = []
 _createImgs()
 
 var gMeme = _createMeme(1)
-console.log('gMeme:', gMeme)
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 
 //create things
@@ -17,6 +16,7 @@ function _createMeme(id) {
         txt: 'Insert Text',
         size: 50,
         color: 'white',
+        pos: {},
       },
     ],
   }
@@ -25,7 +25,6 @@ function _createMeme(id) {
 function _createImg(url, keyWords) {
   return {
     id: generateRandomID(),
-    // url: `img/${name}.jpg`,
     url,
     keywords: ['funny', 'cat'],
   }
@@ -38,14 +37,53 @@ function _createImgs() {
   }
 }
 
+function _createLine() {
+  gMeme.lines.push({
+    txt: 'Insert Text',
+    size: 50,
+    color: 'white',
+  })
+}
+
 //set things
-function setLineText(value, line) {
-  gMeme.lines[0].txt = value
+function setLineText(value) {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].txt = value
+}
+
+function setPositionToLine(idx, x, y, textWidth, textHeight) {
+  gMeme.lines[idx].pos = { x, y, textWidth, textHeight }
 }
 
 function setMeme(id) {
-  console.log('id:', id)
   gMeme = _createMeme(id)
+}
+
+function changeColor(color) {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].color = color
+}
+
+function decreaseFont() {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].size -= 2
+}
+
+function increaseFont() {
+  const lineIdx = gMeme.selectedLineIdx
+  gMeme.lines[lineIdx].size += 2
+}
+
+function addLine() {
+  _createLine()
+  gMeme.selectedLineIdx = 1
+}
+
+function switchLine(idx = null) {
+  if (!idx) {
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
+  } else gMeme.selectedLineIdx = idx
 }
 
 //get things
