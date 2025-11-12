@@ -12,9 +12,10 @@ function renderMeme(isForDownload = false) {
   const meme = getMeme()
   const img = getImgById(meme.selectedImgId)
 
-  renderCanvas()
   const elImg = new Image()
   elImg.src = img.url
+  const ratio = +elImg.naturalHeight / +elImg.naturalWidth
+  renderCanvas(ratio)
 
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -22,20 +23,16 @@ function renderMeme(isForDownload = false) {
   }
 }
 
-function renderCanvas() {
+function renderCanvas(ratio) {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
 
   //4:3 ratio
   gElCanvas.width = window.innerWidth * 0.4
-  gElCanvas.height = gElCanvas.width * 0.75
-
-  gCtx.fillStyle = '#f4f4f4'
-  gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
+  gElCanvas.height = gElCanvas.width * ratio
 }
 
 function drawText(memeline, idx, position, isForDownload) {
-  console.log('isForDownload:', isForDownload)
   const selectedId = getMeme().selectedLineIdx
   gCtx.font = `${memeline.size}px Impact`
   gCtx.textAlign = 'center'
@@ -143,7 +140,6 @@ function onCanvaClick(ev) {
   const { offsetX, offsetY } = ev
   const memeLines = getMeme().lines
   const line = memeLines.findIndex(line => {
-    console.log('line:', line)
     return (
       offsetX >= line.pos.x &&
       offsetX <= line.pos.x + line.pos.textWidth &&
