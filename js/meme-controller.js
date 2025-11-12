@@ -6,13 +6,17 @@ function onInit() {
   renderMeme()
 }
 
-function renderMeme(img) {
+function renderMeme() {
+  const meme = getMeme()
+  const img = getImgById(meme.selectedImgId)
+
   renderCanvas()
   const elImg = new Image()
-  elImg.src = 'img/1.jpg'
+  elImg.src = img.url
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    drawText('Insert Text')
+    const memeText = meme.lines[meme.selectedLineIdx].txt
+    drawText(memeText)
   }
 }
 
