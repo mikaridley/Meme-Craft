@@ -2,12 +2,7 @@
 var gElCanvas
 var gCtx
 
-function onInit() {
-  renderGallery()
-}
-
 //render things
-
 function renderMeme(isForDownload = false) {
   if (document.querySelector('.editor').classList.contains('hidden')) return
   const meme = getMeme()
@@ -33,6 +28,10 @@ function renderCanvas(ratio) {
   //4:3 ratio
   gElCanvas.width = window.innerWidth * 0.4
   gElCanvas.height = gElCanvas.width * ratio
+}
+
+function onResize() {
+  renderMeme()
 }
 
 function drawText(memeline, idx, position, isForDownload) {

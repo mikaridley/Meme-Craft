@@ -2,11 +2,17 @@
   background-color: var(--clr-primary-light);
 
   width: 80vw;
-  margin-inline: auto;
+  max-width: 1600px;
   border-radius: 1.5rem;
   padding: 2rem;
   margin-bottom: 3rem;
 
   display: grid;
+  justify-content: center;
+  align-items: center;
   box-sizing: content-box;
+
+  > p {
+    max-width: 1600px;
+  }
 }

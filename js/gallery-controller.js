@@ -1,5 +1,9 @@
 'use strict'
 
+function onInit() {
+  renderGallery()
+}
+
 function onRenderGallery() {
   document.querySelector('.gallery').classList.remove('hidden')
   document.querySelector('.editor').classList.add('hidden')
@@ -19,4 +23,8 @@ function renderGallery() {
   })
   strHtml += imgs.join('')
   elGallery.innerHTML = strHtml
+}
+
+function toggleMenu() {
+  document.body.classList.toggle('menu-open')
 }

@@ -2,6 +2,7 @@
   background-color: var(--clr-primary-light);
 
   width: 80vw;
+  max-width: 1600px;
   padding: 3rem;
   border-radius: 1.5rem;
 
