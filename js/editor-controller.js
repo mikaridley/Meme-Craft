@@ -13,9 +13,9 @@ function renderMeme(isForDownload = false) {
   elImg.src = img.url
 
   const ratio = +elImg.naturalHeight / +elImg.naturalWidth
-  renderCanvas(ratio)
 
   elImg.onload = () => {
+    renderCanvas(ratio)
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     renderAllTextLines(isForDownload)
   }

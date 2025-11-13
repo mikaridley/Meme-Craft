@@ -17,7 +17,7 @@ function _createMeme(id, url) {
     lines: [
       {
         txt: 'Insert Text',
-        size: 50,
+        size: 70,
         color: 'white',
         pos: {},
         align: 'center',
@@ -45,7 +45,7 @@ function _createImgs() {
 function _createLine() {
   gMeme.lines.push({
     txt: 'Insert Text',
-    size: 50,
+    size: 70,
     color: 'white',
     pos: {},
     align: 'center',
