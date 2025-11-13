@@ -3,3 +3,9 @@
   font-family: inter;
   src: url('../fonts/inter-regular.ttf');
 }
+
+@font-face {
+  font-family: inter-bold;
+  src: url('../fonts/inter-regular.ttf');
+  font-weight: 700;
+}

@@ -14,5 +14,10 @@
 
   > p {
     max-width: 1600px;
+    > a {
+      color: #58952d;
+      font-weight: bold;
+      font-size: 1em;
+    }
   }
 }
