@@ -4,3 +4,12 @@
 
   background-image: url('/icons/Background Grass.png');
 }
+
+.nav-list {
+  gap: 2rem;
+  font-size: 1.5rem;
+
+  > li:hover {
+    color: rgb(84, 84, 84);
+  }
+}

@@ -36,6 +36,7 @@ h2 {
 }
 
 canvas {
+  max-height: 600px;
   border-top: 0.3rem solid var(--clr-border-dark);
   border-left: 0.3rem solid var(--clr-border-dark);
   border-bottom: 0.3rem solid var(--clr-border-light);

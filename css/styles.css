@@ -10,11 +10,9 @@
 /* COMPONENTS */
 @import url('components/main-layout.css');
 @import url('components/main-header.css');
-@import url('components/nav-list.css');
 @import url('components/editor.css');
 @import url('components/gallery.css');
 @import url('components/canvas-settings.css');
-@import url('components/save-btns-container.css');
 @import url('components/icons.css');
 @import url('components/btns.css');
 @import url('components/modal-meme-saved.css');

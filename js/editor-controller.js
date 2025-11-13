@@ -85,7 +85,7 @@ function drawFrame(memeline, x, y) {
   const rectHeight = textHeight + padding
 
   gCtx.lineWidth = 3
-  gCtx.strokeStyle = 'black'
+  gCtx.strokeStyle = '#00ffb6'
   gCtx.strokeRect(rectX, rectY, rectWidth, rectHeight)
 }
 
