@@ -13,7 +13,7 @@
         <ul class="nav-list flex">
           <li onclick="onRenderGallery()" class="clean-list">Gallery</li>
           <li onclick="onRenderSavedMemes()" class="clean-list">Saved Memes</li>
-          <li class="clean-list">About</li>
+          <li onclick="onRenderAbout()" class="clean-list">About</li>
         </ul>
       </nav>
     </header>
@@ -128,8 +128,29 @@
         </section>
       </section>
 
-      <dection class="saved-memes gallery hidden"></dection>
+      <section class="saved-memes gallery hidden"></section>
     </main>
+
+    <section class="about hidden">
+      <p>
+        Meme-Craft lets you create fun, downloadable memes with your own images.
+        Add text, choose colors, and position captions exactly how you like.
+        It’s simple, playful, and perfect for anyone who wants to make memes and
+        have them ready to save.
+      </p>
+      <h2>Our Mission</h2>
+      <p>
+        Our mission is to make meme creation accessible, fun, and fast for
+        everyone. We want to help people express their humor, creativity, and
+        ideas through memes in a simple and enjoyable way.
+      </p>
+      <h2>Contact</h2>
+      <p>
+        Have questions, feedback, or ideas? Reach out to us at contact
+        <a href="mailto:mika.ridley26@gmail.com">mika.ridley26@gmail.com</a> -
+        we’d love to hear from you!
+      </p>
+    </section>
 
     <script src="js/service/storage-service.js"></script>
     <script src="js/service/util-service.js"></script>
@@ -137,5 +158,6 @@
     <script src="js/gallery-controller.js"></script>
     <script src="js/editor-controller.js"></script>
     <script src="js/saved-memes-controller.js"></script>
+    <script src="js/about-controller.js"></script>
   </body>
 </html>

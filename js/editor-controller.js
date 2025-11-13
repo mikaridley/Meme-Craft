@@ -103,6 +103,7 @@ function onRenderEditor(id, url, state) {
   document.querySelector('.editor').classList.remove('hidden')
   document.querySelector('.gallery').classList.add('hidden')
   document.querySelector('.saved-memes').classList.add('hidden')
+  document.querySelector('.about').classList.add('remove')
   setMeme(id, url, state)
   renderMeme()
 }
@@ -202,7 +203,8 @@ function onCanvaClick(ev) {
 
 function onSaveMeme() {
   const savedMemes = getSavedMemes()
-  if (gSavedMemes.length >= 8) {
+  console.log('savedMemes:', savedMemes)
+  if (savedMemes.length >= 8) {
     onOpenModal('Not enough space')
     return
   }

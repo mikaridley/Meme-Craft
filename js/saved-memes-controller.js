@@ -4,6 +4,7 @@ function onRenderSavedMemes() {
   document.querySelector('.saved-memes').classList.remove('hidden')
   document.querySelector('.editor').classList.add('hidden')
   document.querySelector('.gallery').classList.add('hidden')
+  document.querySelector('.about').classList.add('hidden')
   renderSavedMemes()
 }
 
