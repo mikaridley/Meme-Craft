@@ -6,15 +6,16 @@ var gCtx
 function renderMeme(isForDownload = false) {
   if (document.querySelector('.editor').classList.contains('hidden')) return
   const meme = getMeme()
+
   var img = getImgById(meme.selectedImgId)
   if (!img) img = getMemeById(meme.selectedImgId)
+  if (!img) img = meme
 
   const elImg = new Image()
   elImg.src = img.url
 
-  const ratio = +elImg.naturalHeight / +elImg.naturalWidth
-
   elImg.onload = () => {
+    const ratio = +elImg.naturalHeight / +elImg.naturalWidth
     renderCanvas(ratio)
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     renderAllTextLines(isForDownload)

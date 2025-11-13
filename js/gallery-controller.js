@@ -56,13 +56,9 @@ function loadImageFromInput(ev, onImageReady) {
 }
 
 function renderImg(img) {
-  console.log('img:', img)
-  document.querySelector('.editor').classList.remove('hidden')
-  document.querySelector('.gallery').classList.add('hidden')
-  document.querySelector('.saved-memes').classList.add('hidden')
-  document.querySelector('.about').classList.add('remove')
   const imgRatio = img.naturalWidth / img.naturalHeight
   renderCanvas(imgRatio)
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-  setMeme(generateRandomID(), img.src, 'upload')
+
+  onRenderEditor(generateRandomID(), img.src, 'upload')
 }
