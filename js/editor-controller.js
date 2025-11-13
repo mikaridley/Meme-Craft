@@ -203,12 +203,15 @@ function onCanvaClick(ev) {
 
 function onSaveMeme() {
   const savedMemes = getSavedMemes()
-  console.log('savedMemes:', savedMemes)
   if (savedMemes.length >= 8) {
     onOpenModal('Not enough space')
     return
   }
   const dataURL = gElCanvas.toDataURL()
+  if (dataURL.length > 100) {
+    onOpenModal("Can't save uploaded images")
+    return
+  }
   saveMeme(dataURL)
   onOpenModal('Meme Saved')
 }
@@ -219,5 +222,5 @@ function onOpenModal(txt) {
   modal.showModal()
   setTimeout(() => {
     modal.close()
-  }, 1000)
+  }, 2000)
 }

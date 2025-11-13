@@ -2,6 +2,7 @@
   border: 1px solid grey;
   border-radius: 4rem;
   bottom: 60%;
+  font-size: 1.5rem;
 }
 
 .modal-meme-saved::backdrop {
