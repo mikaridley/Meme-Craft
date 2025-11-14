@@ -79,7 +79,7 @@
   }
 
   canvas {
-    min-width: 300px;
+    min-width: 350px;
   }
 
   .save-btns-container {
@@ -88,19 +88,23 @@
   }
 
   .icon {
-    width: 25px;
+    width: 40px;
+  }
+}
+
+@media (max-width: 415px) {
+  .canvas-settings {
+    grid-template-rows: 120px 300px;
   }
 
   .icons-container {
-    /* display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(3, 70px) 60px;
+    grid-template-rows: repeat(3, 70px) 60px;
     justify-content: center;
-    align-items: center; */
-    grid-template-columns: 1fr 1fr 1fr;
+    height: max-content;
   }
 
-  .icon-cell {
-    /* width: 50px;
-    height: 50px; */
+  canvas {
+    min-width: 280px;
   }
 }
