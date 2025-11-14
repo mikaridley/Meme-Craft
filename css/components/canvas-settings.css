@@ -8,6 +8,7 @@
 
   display: grid;
   grid-template-rows: 1fr 3fr;
+  justify-content: center;
   gap: 0.5rem;
 
   > :first-child {
