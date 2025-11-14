@@ -10,19 +10,28 @@
   .btn-toggle-menu {
     display: block;
   }
+
+  .btn-toggle-menu {
+    z-index: 1;
+  }
+
   .mobile-nav {
-    display: flex;
+    display: block;
+
     position: absolute;
     top: 100px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 
     > ul {
       font-size: 1.2rem;
+      display: grid;
+      padding: 0;
 
       > li {
         padding: 0.8rem;
-        width: 10rem;
+        width: 80vw;
       }
     }
   }
@@ -60,5 +69,38 @@
 
   h2 {
     font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    padding: 0.3rem;
+    border-radius: 0px;
+  }
+
+  canvas {
+    min-width: 300px;
+  }
+
+  .save-btns-container {
+    width: max-content;
+    justify-self: center;
+  }
+
+  .icon {
+    width: 25px;
+  }
+
+  .icons-container {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .icon-cell {
+    /* width: 50px;
+    height: 50px; */
   }
 }

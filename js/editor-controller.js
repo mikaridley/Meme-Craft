@@ -1,6 +1,7 @@
 'use strict'
 var gElCanvas
 var gCtx
+const BASE_CANVAS_HEIGHT = 500
 
 //render things
 function renderMeme(isForDownload = false) {
@@ -37,12 +38,15 @@ function onResize() {
 
 function drawText(memeline, idx, position, isForDownload) {
   if (!memeline) return
+  const scaleFactor = gElCanvas.height / BASE_CANVAS_HEIGHT
+  const scaledSize = memeline.size * scaleFactor
+
   const selectedId = getMeme().selectedLineIdx
-  gCtx.font = `${memeline.size}px Impact`
+  gCtx.font = `${scaledSize}px Impact`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'top'
 
-  gCtx.lineWidth = memeline.size / 20
+  gCtx.lineWidth = scaledSize / 20
 
   gCtx.strokeStyle = 'black'
   gCtx.fillStyle = memeline.color
@@ -74,9 +78,12 @@ function drawText(memeline, idx, position, isForDownload) {
 }
 
 function drawFrame(memeline, x, y) {
+  const scaleFactor = gElCanvas.height / BASE_CANVAS_HEIGHT
+  const scaledSize = memeline.size * scaleFactor
+
   const textMetrics = gCtx.measureText(memeline.txt)
   const textWidth = textMetrics.width
-  const textHeight = memeline.size // approximate height
+  const textHeight = scaledSize
 
   const padding = 10
   const rectX = x - textWidth / 2 - padding
