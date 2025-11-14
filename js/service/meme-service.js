@@ -176,7 +176,6 @@ function getIdxMemeById(id) {
 //remove things
 function removeMeme(id) {
   const index = getIdxMemeById(id)
-  console.log('index:', index)
   if (index !== -1) gSavedMemes.splice(index, 1)
   saveToStorage(MEME_KEY, gSavedMemes)
 }

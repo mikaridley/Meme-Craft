@@ -2,6 +2,7 @@
 var gElCanvas
 var gCtx
 const BASE_CANVAS_HEIGHT = 500
+var isTextClicked = true
 
 //render things
 function renderMeme(isForDownload = false) {
@@ -116,21 +117,25 @@ function onRenderEditor(id, url, state) {
 }
 
 function onSetLineTxt(value) {
+  if (!isTextClicked) return
   setLineText(value)
   renderMeme()
 }
 
 function onChangeColor(color) {
+  if (!isTextClicked) return
   changeColor(color)
   renderMeme()
 }
 
 function onDecreaseFont() {
+  if (!isTextClicked) return
   decreaseFont()
   renderMeme()
 }
 
 function onIncreaseFont() {
+  if (!isTextClicked) return
   increaseFont()
   renderMeme()
 }
@@ -141,41 +146,49 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
+  if (!isTextClicked) return
   switchLine()
   renderMeme()
 }
 
 function onSetLeftText() {
+  if (!isTextClicked) return
   setLeftText()
   renderMeme()
 }
 
 function onSetCenterText() {
+  if (!isTextClicked) return
   setCenterText()
   renderMeme()
 }
 
 function onSetRightText() {
+  if (!isTextClicked) return
   setRightText()
   renderMeme()
 }
 
 function onMoveTextUp() {
+  if (!isTextClicked) return
   moveTextUp()
   renderMeme()
 }
 
 function onMoveTextDown() {
+  if (!isTextClicked) return
   moveTextDown()
   renderMeme()
 }
 
 function onMoveTextDown() {
+  if (!isTextClicked) return
   moveTextDown()
   renderMeme()
 }
 
 function onDeleteLine() {
+  if (!isTextClicked) return
   deleteLine()
   renderMeme()
 }
@@ -195,7 +208,17 @@ function onDownloadImg(elLink) {
 
 function onCanvaClick(ev) {
   const { offsetX, offsetY } = ev
+  console.log(`curr tauch:   ${offsetX},${offsetY}`)
   const memeLines = getMeme().lines
+  // console.log(
+  //   `0:   ${memeLines[0].pos.x},  ${memeLines[0].pos.y}  text width:   ${memeLines[0].pos.textWidth},  text height:   ${memeLines[0].pos.textHeight}`
+  // )
+  // console.log(
+  //   `1:   ${memeLines[1].pos.x},  ${memeLines[1].pos.y}  text width:   ${memeLines[1].pos.textWidth},  text height:   ${memeLines[0].pos.textHeight}`
+  // )
+  // console.log(
+  //   `2:   ${memeLines[2].pos.x},  ${memeLines[2].pos.y}  text width:   ${memeLines[2].pos.textWidth},  text height:   ${memeLines[0].pos.textHeight}`
+  // )
   const line = memeLines.findIndex(line => {
     return (
       offsetX >= line.pos.x &&
@@ -204,6 +227,9 @@ function onCanvaClick(ev) {
       offsetY <= line.pos.y + line.pos.textHeight
     )
   })
+  if (line === -1) isTextClicked = false
+  else isTextClicked = true
+  console.log('line:', line)
   switchLine(line)
   renderMeme()
 }
@@ -215,10 +241,11 @@ function onSaveMeme() {
     return
   }
   const dataURL = gElCanvas.toDataURL()
-  if (dataURL.length > 100) {
-    onOpenModal("Can't save uploaded images")
-    return
-  }
+  // if (dataURL.length > 100) {
+  //   console.log('dataURL:', dataURL)
+  //   onOpenModal("Can't save uploaded images")
+  //   return
+  // }
   saveMeme(dataURL)
   onOpenModal('Meme Saved')
 }
@@ -226,7 +253,7 @@ function onSaveMeme() {
 function onOpenModal(txt) {
   const modal = document.querySelector('.modal-meme-saved')
   modal.innerText = txt
-  modal.showModal()
+  modal.show()
   setTimeout(() => {
     modal.close()
   }, 2000)

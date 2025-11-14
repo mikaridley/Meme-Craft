@@ -3,8 +3,10 @@
   border-radius: 4rem;
   bottom: 60%;
   font-size: 1.5rem;
+  pointer-events: none;
 }
 
 .modal-meme-saved::backdrop {
   background: transparent;
+  pointer-events: none;
 }

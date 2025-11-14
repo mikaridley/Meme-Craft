@@ -11,15 +11,18 @@ function onRenderSavedMemes() {
 function renderSavedMemes() {
   const elSavedMemes = document.querySelector('.saved-memes')
   var savedMemes = loadFromStorage(MEME_KEY)
-  if (!savedMemes) return
   let strHtml = ''
-
-  savedMemes = savedMemes.map(meme => {
-    return ` <div class="saved-meme-container relative">
+  if (!savedMemes) return
+  if (savedMemes.length === 0) {
+    strHtml = ` <div class="no-meme-container">You currently haven’t saved any memes.</div>`
+  } else {
+    savedMemes = savedMemes.map(meme => {
+      return ` <div class="saved-meme-container relative">
     <img class="gallery-img" onclick="onRenderEditor('${meme.selectedImgId}','${meme.url}','edit')" src="${meme.data}" alt="Meme" />
     <button onclick="onRemoveMeme('${meme.selectedImgId}')" class="btn close-btn" >X</button>
     </div>`
-  })
+    })
+  }
   strHtml += savedMemes.join('')
   elSavedMemes.innerHTML = strHtml
 }

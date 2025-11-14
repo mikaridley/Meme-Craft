@@ -1,0 +1,7 @@
+.no-meme-container {
+  font-size: 2rem;
+  grid-column: 1 / 5;
+  justify-self: center;
+  align-self: center;
+  padding: 3rem;
+}
