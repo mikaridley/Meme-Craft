@@ -44,9 +44,7 @@ function drawText(memeline, idx, position, isForDownload) {
   const scaleFactor = gElCanvas.height / BASE_CANVAS_HEIGHT
   const scaledSize = memeline.size * scaleFactor
   const selectedId = getMeme().selectedLineIdx
-  const textMetrics = gCtx.measureText(memeline.txt)
-  const textWidth = textMetrics.width
-  const textHeight = memeline.size
+  const padding = 25
   gCtx.font = `${scaledSize}px Impact`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'top'
@@ -70,7 +68,23 @@ function drawText(memeline, idx, position, isForDownload) {
     else if ('middle') y = gElCanvas.height / 2
   } else y = memeline.pos.y
 
-  const xStart = x - textWidth / 2 //help to click on the right text area
+  const textMetrics = gCtx.measureText(memeline.txt)
+  const textWidth = textMetrics.width
+  const textHeight = memeline.size
+  const xStart = x - textWidth / 2
+  const xEnd = x + textWidth / 2
+
+  //prevent the text from overflow on x
+  if (xStart < padding) x = padding + textWidth / 2
+  if (xEnd > gElCanvas.width - padding)
+    x = gElCanvas.width - padding - textWidth / 2
+
+  // const yStart = y - textHeight / 2
+  // const yEnd = y + textHeight / 2
+  // console.log(`y   ${yStart},  ${y},  ${yEnd}`)
+  // if (yStart < 10) y = 10 + textHeight / 2
+  // if (yEnd > gElCanvas.height - 10) y = gElCanvas.height - 10 - textHeight / 2
+
   setPositionToLine(idx, xStart, x, y, textWidth, textHeight)
 
   gCtx.fillText(memeline.txt, x, y)
@@ -245,7 +259,6 @@ function onOpenModal(txt) {
 function onDown(ev) {
   const pos = getEvPos(ev)
   const line = whichTextClicked(pos)
-  console.log('line:', line)
   if (line === -1) return
 
   switchLine(line)
