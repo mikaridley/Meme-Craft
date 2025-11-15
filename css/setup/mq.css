@@ -134,6 +134,10 @@
   .icon {
     width: 40px;
   }
+
+  .btn {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 415px) {

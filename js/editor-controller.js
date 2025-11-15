@@ -71,7 +71,8 @@ function drawText(memeline, idx, position, isForDownload) {
   const textMetrics = gCtx.measureText(memeline.txt)
   const textWidth = textMetrics.width
   const textHeight = scaledSize
-  var xStart = x - textWidth / 2
+
+  const xStart = x - textWidth / 2
   const xEnd = x + textWidth / 2
 
   //prevent the text from overflow on x
@@ -81,8 +82,7 @@ function drawText(memeline, idx, position, isForDownload) {
 
   setPositionToLine(idx, xStart, x, y, textWidth, textHeight)
 
-  // ---------- ROTATION SUPPORT ----------
-
+  //rotation part
   if (memeline.rotation !== 0) {
     gCtx.save()
     gCtx.translate(x, y + textHeight / 2)
@@ -231,6 +231,7 @@ function onDeleteLine() {
 function onCanvaClick(ev) {
   const pos = { x: ev.offsetX, y: ev.offsetY }
   const line = whichTextClicked(pos)
+  console.log('line:', line)
   if (line === -1) isTextClicked = false
   else isTextClicked = true
   switchLine(line)
