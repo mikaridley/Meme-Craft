@@ -1,27 +1,37 @@
 'use strict'
 
+let filteredImgs = getImgs()
+
 function onInit() {
-  renderGallery()
+  onRenderGallery()
 }
 
 function onRenderGallery() {
   document.querySelector('.gallery').classList.remove('hidden')
+  document.querySelector('.gallery-input-container').classList.remove('hidden')
   document.querySelector('.editor').classList.add('hidden')
   document.querySelector('.saved-memes').classList.add('hidden')
   document.querySelector('.about').classList.add('hidden')
-
   renderGallery()
 }
 
 function renderGallery() {
   const elGallery = document.querySelector('.gallery')
-  var imgs = getImgs()
-  let strHtml = ''
-  imgs = imgs.map(img => {
+  let strHtml = `<div class="upload-img">
+          <label for="upload">Upload</label>
+          <input
+            type="file"
+            id="upload"
+            class="hidden btn"
+            name="image"
+            onchange="onImgInput(event)"
+          />
+        </div>`
+  let imgs = filteredImgs.map(img => {
     return ` <img class="gallery-img"onclick="onRenderEditor('${img.id}','${img.url}','create')" src="${img.url}" alt="Meme" />`
   })
   strHtml += imgs.join('')
-  elGallery.innerHTML += strHtml
+  elGallery.innerHTML = strHtml
 }
 
 function toggleMenu() {
@@ -52,4 +62,15 @@ function renderImg(img) {
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
   onRenderEditor(generateRandomID(), img.src, 'upload')
+}
+
+function onFilterImgs(value) {
+  filteredImgs(value)
+  const imgs = getImgs()
+  filteredImgs = imgs.filter(img =>
+    img.keywords.some(keyword =>
+      keyword.toLowerCase().includes(value.toLowerCase())
+    )
+  )
+  renderGallery()
 }

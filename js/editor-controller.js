@@ -1,6 +1,6 @@
 'use strict'
-var gElCanvas
-var gCtx
+let gElCanvas
+let gCtx
 const BASE_CANVAS_HEIGHT = 500
 let gStartPos = { line: -1, pos: null }
 let isTextClicked = true
@@ -11,7 +11,7 @@ function renderMeme(isForDownload = false) {
   if (document.querySelector('.editor').classList.contains('hidden')) return
   const meme = getMeme()
 
-  var img = getImgById(meme.selectedImgId)
+  let img = getImgById(meme.selectedImgId)
   if (!img) img = getMemeById(meme.selectedImgId)
   if (!img) img = meme
 
@@ -113,7 +113,7 @@ function drawFrame(memeline, x, y) {
 }
 
 function renderAllTextLines(isForDownload) {
-  var meme = getMeme()
+  let meme = getMeme()
   meme.lines.forEach((line, idx) => {
     if (idx === 0) drawText(line, 0, 'top', isForDownload)
     else if (idx === 1) drawText(line, 1, 'bottom', isForDownload)
@@ -127,6 +127,8 @@ function onRenderEditor(id, url, state) {
   document.querySelector('.gallery').classList.add('hidden')
   document.querySelector('.saved-memes').classList.add('hidden')
   document.querySelector('.about').classList.add('remove')
+  document.querySelector('.gallery-input-container').classList.add('hidden')
+
   setMeme(id, url, state)
   renderMeme()
 }

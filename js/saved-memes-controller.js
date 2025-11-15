@@ -5,12 +5,13 @@ function onRenderSavedMemes() {
   document.querySelector('.editor').classList.add('hidden')
   document.querySelector('.gallery').classList.add('hidden')
   document.querySelector('.about').classList.add('hidden')
+  document.querySelector('.gallery-input-container').classList.add('hidden')
   renderSavedMemes()
 }
 
 function renderSavedMemes() {
   const elSavedMemes = document.querySelector('.saved-memes')
-  var savedMemes = loadFromStorage(MEME_KEY)
+  let savedMemes = loadFromStorage(MEME_KEY)
   let strHtml = ''
   if (!savedMemes) return
   if (savedMemes.length === 0) {

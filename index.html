@@ -24,9 +24,11 @@
     </header>
 
     <main class="main-layout">
-      <section>
+      <section class="gallery-input-container hidden">
         <input
           class="gallery-input"
+          type="search"
+          oninput="onFilterImgs(this.value)"
           list="keywords"
           name="meme-keywords"
           placeholder="Type or select..."
@@ -41,18 +43,7 @@
         </datalist>
       </section>
 
-      <section class="gallery">
-        <div class="upload-img">
-          <label for="upload">Upload</label>
-          <input
-            type="file"
-            id="upload"
-            class="hidden btn"
-            name="image"
-            onchange="onImgInput(event)"
-          />
-        </div>
-      </section>
+      <section class="gallery"></section>
 
       <section class="editor hidden">
         <dialog class="modal-meme-saved"></dialog>

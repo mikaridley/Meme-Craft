@@ -1,11 +1,11 @@
 'use strict'
 
 const MEME_KEY = 'memeDB'
-var gImgs = getImgsFromDB()
+let gImgs = getImgsFromDB()
 
-var gSavedMemes = loadFromStorage(MEME_KEY) || []
-var gMeme = {}
-var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
+let gSavedMemes = loadFromStorage(MEME_KEY) || []
+let gMeme = {}
+let gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 
 //create things
 function _createMeme(id, url) {
@@ -36,8 +36,8 @@ function _createImg(url, keyWords) {
 }
 
 function _createImgs(amount) {
-  for (var i = 1; i <= amount; i++) {
-    var url = `img/${i}.jpg`
+  for (let i = 1; i <= amount; i++) {
+    let url = `img/${i}.jpg`
     gImgs.push(_createImg(url))
   }
 }
@@ -172,7 +172,7 @@ function getImgs() {
 }
 
 function getImgById(id) {
-  var img = gImgs.find(img => img.id === id)
+  let img = gImgs.find(img => img.id === id)
   return img
 }
 
