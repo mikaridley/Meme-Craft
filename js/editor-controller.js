@@ -416,6 +416,8 @@ function whichTextClicked(pos) {
     document.querySelector('.done-btn').classList.remove('hidden')
     document.querySelector('.download-btn').classList.add('hidden')
     document.querySelector('.share-btn').classList.add('hidden')
+    document.querySelector('.facebook-btn').classList.add('hidden')
+    document.querySelector('.other-btn').classList.add('hidden')
   }
   return line
 }
