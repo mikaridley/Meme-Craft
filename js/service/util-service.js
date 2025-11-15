@@ -33,9 +33,11 @@ function getRandomInt(min, max) {
 }
 
 function shuffleArray(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  return arr
+  let newArr = []
+  newArr.push(arr[3])
+  newArr.push(arr[1])
+  newArr.push(arr[0])
+  newArr.push(arr[4])
+  newArr.push(arr[2])
+  return newArr
 }

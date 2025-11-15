@@ -5,7 +5,7 @@ let gImgs = getImgsFromDB()
 
 let gSavedMemes = loadFromStorage(MEME_KEY) || []
 let gMeme = {}
-let gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2, dog: 6, happy: 4 }
+let gKeywordSearchCountMap = { funny: 8, cat: 4, baby: 1 }
 
 //create things
 function _createMeme(id, url) {

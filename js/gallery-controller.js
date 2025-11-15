@@ -86,9 +86,12 @@ function renderKeyWords(amount = 5) {
   let strHtml = []
   for (let i = 0; i < amount; i++) {
     if (!keywords[i]) continue
-    strHtml.push(`<h3 class="word-${i}">${keywords[i][0]}</h3>`)
+    strHtml.push(
+      `<h3 onclick="onSearchWord(this.innerText)" class="word-${i}">${keywords[i][0]}</h3>`
+    )
   }
-  shuffleArray(strHtml)
+
+  strHtml = shuffleArray(strHtml)
   elSearchWords.innerHTML = strHtml.join(' ')
 
   const baseFont = 1
@@ -96,7 +99,14 @@ function renderKeyWords(amount = 5) {
   for (let i = 0; i < amount; i++) {
     if (!keywords[i]) continue
     let elWord = document.querySelector(`.word-${i}`)
-    console.log('elWord.style.fontSize:', elWord.style.fontSize)
-    elWord.style.fontSize = `${baseFont + fontSizeAdd * keywords[i][1]}rem`
+    let newFontSize = baseFont + fontSizeAdd * keywords[i][1]
+    if (newFontSize > 3.5) newFontSize = 3.5
+    elWord.style.fontSize = `${newFontSize}rem`
   }
+}
+
+function onSearchWord(word) {
+  onFilterImgs(word)
+  onSaveSearch(word)
+  document.querySelector('.gallery-input').value = word
 }
