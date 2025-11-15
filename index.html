@@ -191,16 +191,28 @@
             >Download</a
           >
 
+          <button
+            onclick="onShareMeme()"
+            class="btn share-btn hidden"
+            type="submit"
+          >
+            Share
+          </button>
+
+          <button class="btn other-btn hidden" onclick="onOtherShare()">
+            Other
+          </button>
+
           <form
-            class="share-btn hidden"
+            class="facebook-btn hidden"
             method="POST"
             enctype="multipart/form-data"
-            onsubmit="onShareImg(event)"
+            onsubmit="onShareOnFacebook(event)"
           >
-            <button class="btn share-btn" type="submit">Share</button>
+            <button class="facebook-btn btn" type="submit">Facebook</button>
           </form>
 
-          <a href="#" class="btn save-btn" onclick="onSaveMeme()">Save</a>
+          <a href="#" class="btn save-btn" onclick="onOtherShare()">Save</a>
         </section>
       </section>
       <!-- ----------------------------------------------------------------------------------- -->

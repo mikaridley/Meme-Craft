@@ -2,6 +2,8 @@
   max-width: 400px;
   grid-template-columns: 1fr 1fr 1fr;
 
+  position: relative;
+
   > :first-child {
     grid-column: span 2;
   }
@@ -38,4 +40,24 @@
   border-radius: 10rem;
   width: 50%;
   height: 60%;
+}
+
+.facebook-btn {
+  background-color: var(--clr-primary-dark);
+  position: absolute;
+  top: 120%;
+  left: 26%;
+  width: max-content;
+  bottom: 200px;
+  font-size: 1.2rem;
+}
+
+.other-btn {
+  background-color: var(--clr-primary-dark);
+  position: absolute;
+  top: 120%;
+  left: 58%;
+  width: max-content;
+  height: 15px;
+  font-size: 1.2rem;
 }

@@ -330,7 +330,12 @@ function onSaveMeme() {
   onOpenModal('Meme Saved')
 }
 
-function onShareImg(ev) {
+function onShareMeme() {
+  document.querySelector('.facebook-btn').classList.remove('hidden')
+  document.querySelector('.other-btn').classList.remove('hidden')
+}
+
+function onShareOnFacebook(ev) {
   document.querySelector('.done-btn').classList.remove('hidden')
   document.querySelector('.download-btn').classList.add('hidden')
   document.querySelector('.share-btn').classList.add('hidden')
@@ -347,6 +352,32 @@ function onShareImg(ev) {
     )
   }
   uploadImg(canvasData, onSuccess)
+
+  document.querySelector('.facebook-btn').classList.add('hidden')
+  document.querySelector('.other-btn').classList.add('hidden')
+}
+
+async function onOtherShare() {
+  const canvas = gElCanvas
+
+  // Convert canvas to a blob
+  canvas.toBlob(async blob => {
+    const file = new File([blob], 'meme.png', { type: 'image/png' })
+
+    try {
+      await navigator.share({
+        title: 'My Meme',
+        text: 'Check out my meme!',
+        files: [file],
+      })
+      console.log('Meme shared successfully!')
+    } catch (err) {
+      console.log('Share cancelled or failed:', err)
+    }
+  })
+
+  document.querySelector('.facebook-btn').classList.add('hidden')
+  document.querySelector('.other-btn').classList.add('hidden')
 }
 
 async function uploadImg(imgData, onSuccess) {
