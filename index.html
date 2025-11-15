@@ -12,11 +12,29 @@
 
       <nav class="main-nav">
         <ul class="nav-list flex">
-          <li onclick="onRenderGallery()" class="clean-list btn">Gallery</li>
-          <li onclick="onRenderSavedMemes()" class="clean-list btn">
+          <li class="btn i18n-en-btn" onclick="loadLanguage('en')">English</li>
+          <li class="btn i18n-he-btn" onclick="loadLanguage('he')">עברית</li>
+          <li
+            onclick="onRenderGallery()"
+            class="clean-list btn"
+            data-i18n="gallery"
+          >
+            Gallery
+          </li>
+          <li
+            onclick="onRenderSavedMemes()"
+            class="clean-list btn"
+            data-i18n="saved-memes"
+          >
             Saved Memes
           </li>
-          <li onclick="onRenderAbout()" class="clean-list btn">About</li>
+          <li
+            onclick="onRenderAbout()"
+            class="clean-list btn"
+            data-i18n="about"
+          >
+            About
+          </li>
         </ul>
       </nav>
 
@@ -38,9 +56,11 @@
           />
           <datalist id="keywords"></datalist>
 
-          <button onclick="onFlexibleMeme()" class="btn flexible-btn">
-            I'm Flexible
-          </button>
+          <button
+            onclick="onFlexibleMeme()"
+            class="btn flexible-btn"
+            data-i18n="flexible"
+          ></button>
 
           <div class="search-words"></div>
         </section>
@@ -143,7 +163,7 @@
               />
             </div>
 
-            <div onclick="onSwitchLine()" class="icon-cell">
+            <div onclick="onRotateLine()" class="icon-cell">
               <img
                 class="icon"
                 src="icons/Select Next.png"
@@ -182,13 +202,20 @@
         </section>
 
         <section class="save-btns-container">
-          <a href="#" class="btn done-btn" onclick="onImgReady()">Done!</a>
+          <a
+            href="#"
+            class="btn done-btn"
+            onclick="onImgReady()"
+            data-i18n="done-btn"
+            >Done!</a
+          >
 
           <a
             href="#"
             class="btn download-btn hidden"
             onclick="onDownloadImg(this,event)"
             download="my-meme.jpg"
+            data-i18n="download-btn"
             >Download</a
           >
 
@@ -196,11 +223,16 @@
             onclick="onShareMeme()"
             class="btn share-btn hidden"
             type="submit"
+            data-i18n="share-btn"
           >
             Share
           </button>
 
-          <button class="btn other-btn hidden" onclick="onOtherShare()">
+          <button
+            class="btn other-btn hidden"
+            onclick="onOtherShare()"
+            data-i18n="other-btn"
+          >
             Other
           </button>
 
@@ -210,10 +242,22 @@
             enctype="multipart/form-data"
             onsubmit="onShareOnFacebook(event)"
           >
-            <button class="facebook-btn btn" type="submit">Facebook</button>
+            <button
+              class="facebook-btn btn"
+              type="submit"
+              data-i18n="facebook-btn"
+            >
+              Facebook
+            </button>
           </form>
 
-          <a href="#" class="btn save-btn" onclick="onSaveMeme()">Save</a>
+          <a
+            href="#"
+            class="btn save-btn"
+            onclick="onSaveMeme()"
+            data-i18n="save-btn"
+            >Save</a
+          >
         </section>
       </section>
       <!-- ----------------------------------------------------------------------------------- -->
@@ -222,20 +266,20 @@
 
       <section class="about hidden">
         <h2 class="logo about-logo"><img src="icons/Logo.png" alt="logo" /></h2>
-        <p>
+        <p data-i18n="about_description">
           Meme-Craft lets you create fun, downloadable, and shareable memes
           using your own images. Add text, choose colours, and position captions
           exactly how you like. It’s simple, playful, and perfect for anyone who
           wants to make memes and have them ready to save or share.
         </p>
-        <h2>Our Mission</h2>
-        <p>
+        <h2 data-i18n="mission_title">Our Mission</h2>
+        <p data-i18n="mission_text">
           Our mission is to make meme creation accessible, fun, and fast for
           everyone. We aim to help people express their humour, creativity, and
           ideas through memes in a simple and enjoyable way.
         </p>
-        <h2>Contact</h2>
-        <p>
+        <h2 data-i18n="contact_title">Contact</h2>
+        <p data-i18n="contact_text">
           Have questions, feedback, or ideas? Reach out to us at contact
           <a class="email" href="mailto:mika.ridley26@gmail.com"
             >mika.ridley26@gmail.com</a
@@ -256,5 +300,6 @@
     <script src="js/editor-controller.js"></script>
     <script src="js/saved-memes-controller.js"></script>
     <script src="js/about-controller.js"></script>
+    <script src="js/i18n.js"></script>
   </body>
 </html>

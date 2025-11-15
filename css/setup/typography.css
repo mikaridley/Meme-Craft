@@ -1,4 +1,4 @@
-/* lato */
+/* inter english */
 @font-face {
   font-family: inter;
   src: url('../fonts/inter-regular.ttf');
@@ -7,5 +7,17 @@
 @font-face {
   font-family: inter-bold;
   src: url('../fonts/inter-regular.ttf');
+  font-weight: 700;
+}
+
+/* heebo hebrew */
+@font-face {
+  font-family: heebo;
+  src: url('../fonts/heebo-regular.ttf');
+}
+
+@font-face {
+  font-family: heebo;
+  src: url('../fonts/heebo-regular.ttf');
   font-weight: 700;
 }

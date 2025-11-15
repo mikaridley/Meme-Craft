@@ -182,6 +182,11 @@ function onAddLine() {
 function onSwitchLine() {
   if (!isTextClicked) return
   // switchLine()
+  renderMeme()
+}
+
+function onRotateLine() {
+  if (!isTextClicked) return
   rotateLine()
   renderMeme()
 }

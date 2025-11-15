@@ -4,6 +4,7 @@ let filteredImgs = getImgs()
 
 function onInit() {
   onRenderGallery()
+  loadLanguage('en')
 }
 
 function onRenderGallery() {
@@ -18,7 +19,7 @@ function onRenderGallery() {
 function renderGallery() {
   const elGallery = document.querySelector('.gallery')
   let strHtml = `<div class="upload-img">
-          <label for="upload">Upload</label>
+          <label for="upload" data-i18n="upload">Upload</label>
           <input
             type="file"
             id="upload"
