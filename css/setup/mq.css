@@ -50,6 +50,15 @@
   .flexible-btn {
     font-size: 1rem;
   }
+
+  .up-down-btn {
+    > :first-child,
+    :nth-child(2) {
+      > img {
+        width: 17px;
+      }
+    }
+  }
 }
 
 /* mobile only */
@@ -170,5 +179,15 @@
 
   canvas {
     min-width: 250px;
+  }
+
+  .up-down-btn {
+    > :first-child,
+    :nth-child(2) {
+      padding: 3px;
+      > img {
+        width: 15px;
+      }
+    }
   }
 }

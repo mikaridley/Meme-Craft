@@ -61,3 +61,12 @@
   height: 15px;
   font-size: 1.2rem;
 }
+
+.up-down-btn {
+  > :first-child,
+  :nth-child(2) {
+    > img {
+      width: 25px;
+    }
+  }
+}

@@ -181,7 +181,7 @@ function onAddLine() {
 
 function onSwitchLine() {
   if (!isTextClicked) return
-  // switchLine()
+  switchLine()
   renderMeme()
 }
 
