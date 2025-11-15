@@ -122,3 +122,10 @@ function onSearchWord(word) {
   onSaveSearch(word)
   document.querySelector('.gallery-input').value = word
 }
+
+function onFlexibleMeme() {
+  const randImg = getRandomImg()
+  onRenderEditor(randImg.id, randImg.url, 'create')
+  const randTextIndex = getRandomInt(0, getTextFromDB().length)
+  setLineText(getTextFromDB()[randTextIndex])
+}

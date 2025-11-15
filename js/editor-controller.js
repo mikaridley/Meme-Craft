@@ -70,7 +70,6 @@ function drawText(memeline, idx, position, isForDownload) {
 
   const textMetrics = gCtx.measureText(memeline.txt)
   const textWidth = textMetrics.width
-  // const textHeight = memeline.size
   const textHeight = scaledSize
   const xStart = x - textWidth / 2
   const xEnd = x + textWidth / 2

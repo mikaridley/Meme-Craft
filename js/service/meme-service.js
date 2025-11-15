@@ -13,18 +13,7 @@ function _createMeme(id, url) {
     selectedImgId: id,
     selectedLineIdx: 0,
     url,
-    lines: [
-      {
-        txt: 'Insert Text',
-        size: 60,
-        color: 'white',
-        pos: {},
-        align: 'center',
-        rotation: 0,
-        isChangedManuly: false,
-        isDraged: false,
-      },
-    ],
+    lines: [_createLine()],
   }
 }
 
@@ -48,16 +37,16 @@ function createUploadedImg(img) {
 }
 
 function _createLine() {
-  gMeme.lines.push({
+  return {
     txt: 'Insert Text',
-    size: 60,
+    size: 50,
     color: 'white',
     pos: {},
     align: 'center',
     rotation: 0,
     isChangedManuly: false,
     isDraged: false,
-  })
+  }
 }
 
 //set things
@@ -91,7 +80,7 @@ function increaseFont() {
 }
 
 function addLine() {
-  _createLine()
+  gMeme.lines.push(_createLine())
   gMeme.selectedLineIdx = 1
 }
 
@@ -178,6 +167,12 @@ function getMeme() {
 
 function getImgs() {
   return gImgs
+}
+
+function getRandomImg() {
+  const randImg = getRandomInt(0, getImgs().length)
+  console.log('gImgs[randImg]:', gImgs[randImg])
+  return gImgs[randImg]
 }
 
 function getImgById(id) {

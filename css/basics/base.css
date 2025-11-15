@@ -52,3 +52,13 @@ a {
   color: var(--clr-txt-base);
   font-size: 1.5rem;
 }
+
+button {
+  border: none;
+  color: var(--clr-txt-base);
+  font-family: 'inter', sarif;
+  font-size: 1.5rem;
+  width: 100%;
+
+  cursor: pointer;
+}

@@ -28,14 +28,14 @@
   position: absolute;
   right: 0;
   top: 0;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--clr-border-dark);
 }
 
-.share-btn {
-  border: none;
-  color: var(--clr-txt-base);
-  font-family: 'inter', sarif;
-  font-size: 1.5rem;
-  width: 100%;
-
-  cursor: pointer;
+.flexible-btn {
+  justify-self: end;
+  border-radius: 10rem;
+  width: 50%;
+  height: 60%;
 }

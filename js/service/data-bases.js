@@ -421,3 +421,33 @@ function getImgsFromDB() {
     },
   ]
 }
+
+function getTextFromDB() {
+  return [
+    'This is fine',
+    'Living my worst life',
+    'Please stop talking',
+    'I need sleep',
+    'Not my problem',
+    'Why am I like this',
+    'Current emotional status',
+    'Try me today',
+    'I can’t even',
+    'Mentally not present',
+    'Guess who’s back',
+    'Zero thoughts given',
+    "This ain't it",
+    'Do not disturb',
+    'Running on chaos',
+    'My last braincell',
+    'Everything is burning',
+    'Please send snacks',
+    'Too early for this',
+    'Who approved this',
+    'Certified disaster moment',
+    'Peak procrastination vibes',
+    'Don’t ask why',
+    'Overthinking in progress',
+    'Absolutely not today',
+  ]
+}
