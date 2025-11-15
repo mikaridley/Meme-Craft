@@ -14,7 +14,7 @@ function renderSavedMemes() {
   let savedMemes = loadFromStorage(MEME_KEY)
   let strHtml = ''
   if (!savedMemes) return
-  if (savedMemes.length === 0) {
+  if (savedMemes.length === 0 || !savedMemes) {
     strHtml = ` <div class="no-meme-container">You currently haven’t saved any memes.</div>`
   } else {
     savedMemes = savedMemes.map(meme => {
