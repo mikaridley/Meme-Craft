@@ -30,11 +30,14 @@ function renderCanvas(ratio) {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
 
-  //4:3 ratio
-  // gElCanvas.width = window.innerWidth * 0.4
-  // gElCanvas.height = gElCanvas.width * ratio
-  gElCanvas.width = 500
-  gElCanvas.height = 500
+  // 4:3 ratio
+  gElCanvas.width = window.innerWidth * 0.4
+  gElCanvas.height = gElCanvas.width * ratio
+  //mq
+  if (window.innerWidth <= 1100) {
+    gElCanvas.width = window.innerWidth * 0.9
+    gElCanvas.height = gElCanvas.width * ratio
+  }
 }
 
 function renderLineSetting() {
@@ -253,8 +256,6 @@ function onDeleteLine() {
 function onCanvaClick(ev) {
   const pos = { x: ev.offsetX, y: ev.offsetY }
   const lineIndex = whichTextClicked(pos)
-  // if (lineIndex === -1) setLineIndex(-1)
-  // else setLineIndex(lineIndex)
   switchLine(lineIndex)
   renderMeme()
 }
@@ -315,25 +316,20 @@ function onUp() {
 }
 
 function getEvPos(ev) {
-  const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+  const rect = gElCanvas.getBoundingClientRect()
+  let x, y
 
-  let pos = {
-    x: ev.offsetX,
-    y: ev.offsetY,
-  }
-
-  if (TOUCH_EVS.includes(ev.type)) {
-    // Prevent triggering the mouse ev
+  if (ev.type.startsWith('touch')) {
     ev.preventDefault()
-    // Gets the first touch point
-    ev = ev.changedTouches[0]
-    // Calc the right pos according to the touch screen
-    pos = {
-      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-    }
+    const touch = ev.changedTouches[0]
+    x = touch.clientX - rect.left
+    y = touch.clientY - rect.top
+  } else {
+    x = ev.clientX - rect.left
+    y = ev.clientY - rect.top
   }
-  return pos
+
+  return { x, y }
 }
 
 function onImgReady() {
@@ -430,20 +426,20 @@ async function uploadImg(imgData, onSuccess) {
 
 //other
 function whichTextClicked(pos) {
+  console.log('pos:', pos)
   const { x, y } = pos
   const meme = getMeme()
-
+  console.log('meme.lines[0].pos:', meme.lines[0].pos)
   var line = meme.lines.findIndex(line => {
     return (
-      x >= line.pos.xStart &&
-      x <= line.pos.xStart + line.pos.textWidth &&
+      x >= line.pos.x &&
+      x <= line.pos.x + line.pos.textWidth &&
       y >= line.pos.y &&
       y <= line.pos.y + line.pos.textHeight
     )
   })
 
   if (line !== -1) renderDoneBtn()
-
   return line
 }
 

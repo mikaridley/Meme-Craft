@@ -37,6 +37,7 @@
   .search-words {
     display: none;
   }
+
   .gallery-layout {
     justify-items: center;
   }
@@ -59,7 +60,7 @@
   }
 
   .editor {
-    grid-template-columns: 1fr;
+    grid-template-columns: 95vw;
 
     padding-inline: 0.5rem;
     padding-bottom: 2rem;
@@ -68,9 +69,6 @@
     > :nth-child(2) {
       grid-row: 1;
       grid-column: 1;
-      min-width: 95vw;
-      max-height: none;
-      min-height: 0;
     }
 
     > :nth-child(3) {
@@ -94,14 +92,6 @@
 }
 
 @media (max-width: 550px) {
-  .editor {
-    padding: 0rem;
-
-    > :nth-child(2) {
-      width: 95vw;
-    }
-  }
-
   .main-layout {
     display: grid;
     grid-template-columns: 100vw;
