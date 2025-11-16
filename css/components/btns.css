@@ -1,6 +1,10 @@
 .save-btns-container {
   max-width: 400px;
+  max-height: 50px;
   grid-template-columns: 1fr 1fr 1fr;
+
+  justify-self: center;
+  align-self: center;
 
   position: relative;
 
@@ -40,6 +44,8 @@
   border-radius: 10rem;
   width: max-content;
   height: max-content;
+  margin-inline-end: 3rem;
+  align-self: center;
 }
 
 .facebook-btn {

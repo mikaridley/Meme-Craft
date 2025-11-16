@@ -29,7 +29,7 @@
   margin-inline: 3rem;
   border: none;
 
-  align-self: end;
+  align-self: center;
 
   cursor: pointer;
   color: var(--clr-txt-base);
@@ -107,6 +107,8 @@
 }
 
 .gallery-img {
+  object-fit: cover;
+  min-height: 100%;
   border-top: 0.3rem solid var(--clr-border-dark);
   border-left: 0.3rem solid var(--clr-border-dark);
   border-bottom: 0.3rem solid var(--clr-border-light);
