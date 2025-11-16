@@ -217,20 +217,13 @@
         </section>
 
         <section class="save-btns-container">
-          <a
-            href="#"
-            class="btn done-btn"
-            onclick="onImgReady()"
-            data-i18n="done-btn"
-            >Done!</a
-          >
+          <a href="#" class="btn done-btn" onclick="onImgReady()">Done!</a>
 
           <a
             href="#"
             class=""
             onclick="onDownloadImg(this,event)"
             download="my-meme.jpg"
-            data-i18n="download-btn"
           >
             <img
               class="hidden download-btn"
@@ -245,7 +238,7 @@
             enctype="multipart/form-data"
             onsubmit="onShareOnFacebook(event)"
           >
-            <button class="facebook-btn" type="submit" data-i18n="facebook-btn">
+            <button class="facebook-btn" type="submit">
               <img
                 src="icons/Facebook.png"
                 alt="Icon"
@@ -254,11 +247,7 @@
             </button>
           </form>
 
-          <button
-            class="other-btn hidden"
-            onclick="onOtherShare()"
-            data-i18n="other-btn"
-          >
+          <button class="other-btn hidden" onclick="onOtherShare()">
             <img src="icons/Share.png" alt="Icon" title="share" />
           </button>
 
