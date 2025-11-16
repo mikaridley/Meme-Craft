@@ -15,6 +15,7 @@ function onRenderSavedMemes() {
 function renderSavedMemes() {
   const elSavedMemes = document.querySelector('.saved-memes')
   let savedMemes = loadFromStorage(MEME_KEY) || []
+  console.log('savedMemes:', savedMemes)
   let strHtml = ''
   if (!savedMemes) return
   if (savedMemes.length === 0) {

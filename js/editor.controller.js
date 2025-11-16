@@ -354,18 +354,13 @@ function onDownloadImg(elLink) {
 
 function onSaveMeme() {
   const savedMemes = getSavedMemes()
-  if (savedMemes.length >= 8) {
-    onOpenModal('Not enough space')
+  if (savedMemes.length >= 5) {
+    onOpenModal('There is not enough space')
     return
   }
   const dataURL = gElCanvas.toDataURL()
-  // if (dataURL.length > 100) {
-  //   console.log('dataURL:', dataURL)
-  //   onOpenModal("Can't save uploaded images")
-  //   return
-  // }
   saveMeme(dataURL)
-  onOpenModal('Meme Saved')
+  onOpenModal('Meme saved')
   renderDoneBtn()
 }
 
