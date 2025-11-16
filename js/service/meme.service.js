@@ -56,8 +56,8 @@ function setLineText(value) {
   gMeme.lines[lineIdx].txt = value
 }
 
-function setPositionToLine(idx, xStart, x, y, textWidth, textHeight) {
-  gMeme.lines[idx].pos = { x, y, xStart, textWidth, textHeight }
+function setPositionToLine(idx, x, y, rectX, rectY, textWidth, textHeight) {
+  gMeme.lines[idx].pos = { x, y, rectX, rectY, textWidth, textHeight }
 }
 
 function setMeme(id, url, state) {

@@ -50,15 +50,13 @@ function renderLineSetting() {
 
   const elText = document.querySelector('.text-input')
   elText.value = memeLine.txt
-
-  renderMeme()
 }
 
 function onResize() {
   renderMeme()
 }
 
-function drawText(memeline, idx, position, isForDownload) {
+function drawText(memeline, idx, Ypos, isForDownload) {
   if (!memeline) return
   const scaleFactor = gElCanvas.height / BASE_CANVAS_HEIGHT
   const scaledSize = memeline.size * scaleFactor
@@ -82,8 +80,8 @@ function drawText(memeline, idx, position, isForDownload) {
   let y
   if (!memeline.isChangedManuly) {
     //set the position - the y
-    if (position === 'top') y = gElCanvas.height * 0.1
-    else if (position === 'bottom') y = gElCanvas.height * 0.8
+    if (Ypos === 'top') y = gElCanvas.height * 0.1
+    else if (Ypos === 'bottom') y = gElCanvas.height * 0.8
     else if ('middle') y = gElCanvas.height / 2
   } else y = memeline.pos.y
 
@@ -99,7 +97,7 @@ function drawText(memeline, idx, position, isForDownload) {
   if (xEnd > gElCanvas.width - padding)
     x = gElCanvas.width - padding - textWidth / 2
 
-  setPositionToLine(idx, xStart, x, y, textWidth, textHeight)
+  // setPositionToLine(idx, x, y, textWidth, textHeight)
 
   //rotation part
   if (memeline.rotation !== 0) {
@@ -114,10 +112,10 @@ function drawText(memeline, idx, position, isForDownload) {
     gCtx.strokeText(memeline.txt, x, y)
   }
 
-  if (idx === selectedId && !isForDownload) drawFrame(memeline, x, y)
+  if (idx === selectedId && !isForDownload) drawFrame(memeline, idx, x, y)
 }
 
-function drawFrame(memeline, x, y) {
+function drawFrame(memeline, idx, x, y) {
   const scaleFactor = gElCanvas.height / BASE_CANVAS_HEIGHT
   const scaledSize = memeline.size * scaleFactor
 
@@ -141,6 +139,8 @@ function drawFrame(memeline, x, y) {
     rectWidth = textHeight + padding * 2
     rectHeight = textWidth + padding
   }
+
+  setPositionToLine(idx, x, y, rectX, rectY, rectWidth, rectHeight)
 
   gCtx.lineWidth = 3
   gCtx.strokeStyle = '#00ffb6'
@@ -426,19 +426,18 @@ async function uploadImg(imgData, onSuccess) {
 
 //other
 function whichTextClicked(pos) {
-  console.log('pos:', pos)
   const { x, y } = pos
   const meme = getMeme()
-  console.log('meme.lines[0].pos:', meme.lines[0].pos)
+
   var line = meme.lines.findIndex(line => {
+    // const xStart = line.pos.x - 120
     return (
-      x >= line.pos.x &&
-      x <= line.pos.x + line.pos.textWidth &&
-      y >= line.pos.y &&
-      y <= line.pos.y + line.pos.textHeight
+      x >= line.pos.rectX &&
+      x <= line.pos.rectX + line.pos.textWidth &&
+      y >= line.pos.rectY &&
+      y <= line.pos.rectY + line.pos.textHeight
     )
   })
-
   if (line !== -1) renderDoneBtn()
   return line
 }
