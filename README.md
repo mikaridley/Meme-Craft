@@ -12,6 +12,14 @@
 
 <hr>
 
+<h2>Live Demo 🚀</h2>
+<p>You can try the game <a target="_blank" href="https://mikaridley.github.io/Meme-Craft/">here</a></p>
+
+<h2>Preview 📸</h2>
+<img src="memeCraftPreview.png" alt="Screenshot of the game">
+
+<hr>
+
 <h2>Features ✨</h2>
 
 <h3>Core Functionality</h3>
@@ -29,10 +37,8 @@
   <li>Switch line selection for editing</li>
   <li>Frame around selected line for clear editing</li>
   <li>Drag & Drop lines and stickers on canvas</li>
-  <li>Add emoji stickers as lines (e.g., 😜😍)</li>
   <li>Delete line functionality</li>
   <li>Text alignment: left, center, right</li>
-  <li>Font family selection</li>
   <li>Rotate text lines</li>
 </ul>
 
@@ -69,7 +75,6 @@
 
 <h2>How to Use 🎮</h2>
 <ol>
-  <li>Clone the repository.</li>
   <li>Open <code>index.html</code> in a web browser.</li>
   <li>Select an image from the gallery or upload your own.</li>
   <li>Add text lines or stickers using the meme editor.</li>
@@ -85,16 +90,10 @@
   <li>HTML5</li>
   <li>CSS3</li>
   <li>JavaScript (Vanilla)</li>
-  <li>Canvas API for dynamic image editing</li>
+  <li>Canvas for dynamic image editing</li>
   <li>DOM Manipulation</li>
   <li>localStorage for saved memes</li>
 </ul>
-
-<h2>Preview 📸</h2>
-<img src="img/screenshot.png" alt="Screenshot of Meme‑Craft project">
-
-<h2>Live Demo 🚀</h2>
-<p>You can try the live version <a href="https://your-live-demo-link.com" target="_blank" rel="noopener noreferrer">here</a></p>
 
 <hr>
 
@@ -105,7 +104,7 @@
   <li>Mobile-friendly design ensures usability across devices.</li>
 </ul>
 
-<p>Made with ❤️ by <strong>Mika Ridley</strong></p>
+<p>Made by <strong>Mika Ridley</strong></p>
 
 </body>
 </html>
